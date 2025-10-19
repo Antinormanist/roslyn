@@ -23,7 +23,7 @@ When efficiency and debuggability are at conflict, Release and Debug make differ
  - The capturing is smarter now when optimizations are enabled since it relies on precise data flow analysis. Basically only locals that cross awaits need to be lifted. Old compiler used more conservative approach and would often capture locals unnecessarily.
  - The stack spilling is completely different. Instead of always present object array slot, we generate strongly typed reusable slots, but only if needed.
 
-•	Iterators - the genral principle is the same, but there were some minor refinements in the state machine.
+•	Iterators - the general principle is the same, but there were some minor refinements in the state machine.
  - Local capturing is based on precise data flow analysis and may result in fewer local lifted into iterator class. Generally only locals whose values are alive across yield statements need to be captured.
  - Valid states are now all positive and invalid states are negative. The common path in the  iterator body switches on valid states and there are benefits from the set of those states being contiguous.
  
